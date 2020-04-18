@@ -1,7 +1,10 @@
 import 'dart:math' as math;
 
 import 'package:flutter/material.dart';
-
+//https://github.com/flutter/flutter/issues/23648
+//https://stackoverflow.com/questions/50376727/flutter-drawarc-method-draws-full-circle-not-just-arc
+//https://api.flutter.dev/flutter/vector_math/vector_math-library.html
+//https://api.flutter.dev/flutter/dart-ui/Canvas/drawArc.html
 class MyProgress extends CustomPainter {
   var progress = 0;
 
