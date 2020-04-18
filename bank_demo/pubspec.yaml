@@ -14,7 +14,7 @@ description: A new Flutter application.
 version: 1.0.0+1
 
 environment:
-  sdk: ">=2.1.0 <3.0.0"
+  sdk: ">=2.2.0 <3.0.0"
 
 dependencies:
   flutter:
@@ -53,6 +53,10 @@ flutter:
     - citibank_logo.png
     - visa_inc_logo.png
     - left_circle_logo.png
+    - sparkle_icon.png
+    - welldone_icon.png
+    - food.png
+    - clothing_icon.png
   #  - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
