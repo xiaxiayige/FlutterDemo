@@ -1,4 +1,10 @@
 class R {
+	static const String img_mine_home_identity_common = "assets/img/mine/home_identity_common.png";
+	static const String img_mine_mine_head = "assets/img/mine/mine_head.jpg";
+	static const String img_mine_personal_banner_membership = "assets/img/mine/personal_banner_membership.png";
+	static const String img_mine_personal_icon_point = "assets/img/mine/personal_icon_point.png";
+	static const String img_mine_personal_membercenter_bg_pressed = "assets/img/mine/personal_membercenter_bg_pressed.png";
+	static const String img_mine_sapi_sdk_sweep_light = "assets/img/mine/sapi_sdk_sweep_light.png";
 	static const String img_bg_dn_audio_album_null_new_enter_nor = "assets/img/bg_dn_audio_album_null_new_enter_nor.png";
 	static const String img_bg_dn_common_titlebar_btn_add = "assets/img/bg_dn_common_titlebar_btn_add.png";
 	static const String img_bg_dn_common_titlebar_btn_transfer_small = "assets/img/bg_dn_common_titlebar_btn_transfer_small.png";

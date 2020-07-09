@@ -7,3 +7,9 @@ extension costom_widget on Widget{
     );
   }
 }
+
+extension  on String{
+  Color toColor(){
+    return Color(int.parse("0xff${this}"));
+  }
+}
