@@ -1,11 +1,25 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutterpanbaidu/bean/bean.dart';
 import 'package:flutterpanbaidu/generated/r.dart';
+import 'package:flutterpanbaidu/tools/common_widget.dart';
 
 /****
  * 我的
  */
 class MinePage extends StatelessWidget {
+
+  List<CardInfo> toolscards=[
+    CardInfo(R.img_service_album_icon,"相册备份",""),
+    CardInfo(R.img_service_album_icon,"回收站",""),
+    CardInfo(R.img_service_album_icon,"我的会员",""),
+    CardInfo(R.img_service_album_icon,"活动中心",""),
+    CardInfo(R.img_service_album_icon,"小程序",""),
+    CardInfo(R.img_service_album_icon,"我的分享",""),
+    CardInfo(R.img_service_album_icon,"只能设备",""),
+    CardInfo(R.img_service_album_icon,"文件清理",""),
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -158,13 +172,69 @@ class MinePage extends StatelessWidget {
             )
           ],
         ),
-        SizedBox(height: 4,),
-        Container(
-          margin: EdgeInsets.only(left: 8,right: 8),
-          height: 200,
-          color: Colors.white,
-        )
+        SizedBox(height: 6,),
+        _buildCard("网盘功能",true,null)
       ],
+    );
+  }
+
+
+
+  Widget _buildCard(String title,bool isMore,List<CardInfo> cards){
+      return Container(
+        padding: EdgeInsets.all(16),
+        margin: EdgeInsets.only(left: 8,right: 8),
+        height: 235,
+        decoration: BoxDecoration(boxShadow: [BoxShadow(blurRadius: 8,color: Colors.grey.withAlpha(80))],borderRadius: BorderRadius.circular(8),color: Colors.white),
+        child: Column(
+          children: <Widget>[
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: <Widget>[
+              Text(title,style: TextStyle(fontSize: 20,color: Colors.black,fontWeight: FontWeight.bold),),
+              isMore ? TextIcon(text: Text("更多"),icon: Icon(Icons.arrow_forward_ios,size: 12,color: Colors.grey,),icon_direction: TextIcon.TO_RIGHT,padding: 3,):null
+              ],),
+            Container(
+              height: 180,
+              child:  GridView.builder(
+                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 4, mainAxisSpacing: 8, crossAxisSpacing: 8),
+                itemBuilder: (context, index) {
+                  return buildCard(toolscards[index]);
+                },
+                itemCount: 6,
+                shrinkWrap: false,
+                physics: NeverScrollableScrollPhysics(),
+              ),
+            )
+          ],
+        ),
+      );
+  }
+
+  Widget buildCardWidget(CardInfo cardInfo) {
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: <Widget>[
+        Image.asset(cardInfo.img,width: 35,height: 35,),
+        SizedBox(height: 4,),
+        Text(cardInfo.title,style: TextStyle(color: Colors.black,fontSize: 16,fontWeight: FontWeight.bold),),
+        SizedBox(height: 2,),
+      ],
+    );
+  }
+
+  Widget buildCard(CardInfo card) {
+    return Container(
+      height: 60,
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: <Widget>[
+          Image.asset(card.img,width: 30,height: 40,),
+          Text(card.title)
+        ],
+      ),
     );
   }
 }
