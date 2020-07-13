@@ -20,161 +20,175 @@ class MinePage extends StatelessWidget {
     CardInfo(R.img_service_album_icon,"文件清理",""),
   ];
 
+  List<CardInfo> moreService=[
+    CardInfo(R.img_service_album_icon,"免费问医生",""),
+    CardInfo(R.img_service_album_icon,"借现金",""),
+    CardInfo(R.img_service_album_icon,"冲印商城",""),
+    CardInfo(R.img_service_album_icon,"搜一搜",""),
+    CardInfo(R.img_service_album_icon,"免流量卡",""),
+    CardInfo(R.img_service_album_icon,"领无限空间",""),
+  ];
+
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: <Widget>[
-        Container(
-          height: 125,
-          color: Colors.white,
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
+    return SingleChildScrollView(
+      padding: EdgeInsets.only(bottom: 8),
+      child: Column(
+        children: <Widget>[
+          Container(
+            height: 125,
+            color: Colors.white,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: <Widget>[
+                CircleAvatar(
+                  child: Image.asset(
+                    R.img_mine_mine_head,
+                    width: 80,
+                    height: 80,
+                  ),
+                ),
+                Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
+                    Row(
+                      children: <Widget>[
+                        Text(
+                          "哇—不公平嘎",
+                          style: TextStyle(
+                              fontSize: 20,
+                              color: Colors.black,
+                              fontWeight: FontWeight.bold),
+                        ),
+                        SizedBox(
+                          width: 4,
+                        ),
+                        Image.asset(
+                          R.img_mine_home_identity_common,
+                          width: 18,
+                          height: 16,
+                        ),
+                      ],
+                    ),
+                    SizedBox(
+                      height: 8,
+                    ),
+                    Container(
+                      width: 180,
+                      height: 3,
+                      child: LinearProgressIndicator(
+                        backgroundColor: Colors.grey.withAlpha(50),
+                        value: 0.2,
+                      ),
+                    ),
+                    SizedBox(
+                      height: 8,
+                    ),
+                    Row(
+                      children: <Widget>[
+                        Text(
+                          "100G/2056G",
+                          style:
+                              TextStyle(color: Color(0xffAEAEAE), fontSize: 12),
+                        ),
+                        SizedBox(
+                          width: 6,
+                        ),
+                        Text(
+                          "管理空间",
+                          style: TextStyle(color: Colors.red, fontSize: 12),
+                        ),
+                      ],
+                    )
+                  ],
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    Image.asset(
+                      R.img_mine_personal_icon_point,
+                      width: 30,
+                      height: 60,
+                    ),
+                    Text(
+                      "当前0积分",
+                      style: TextStyle(color: Colors.orange, fontSize: 12),
+                    )
+                  ],
+                )
+              ],
+            ),
+          ),
+          Stack(
             children: <Widget>[
-              CircleAvatar(
-                child: Image.asset(
-                  R.img_mine_mine_head,
-                  width: 80,
-                  height: 80,
+              Container(
+                margin: EdgeInsets.only(left: 8, right: 8, top: 8),
+                height: 68,
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(8),
+                    color: Color(0xffECD9AE)),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: <Widget>[
+                    Row(
+                      children: <Widget>[
+                        Image.asset(
+                          R.img_mine_personal_banner_membership,
+                          height: 24,
+                          width: 28,
+                        ),
+                        SizedBox(
+                          width: 4,
+                        ),
+                        Text(
+                          "开通超级会员",
+                          style: TextStyle(
+                              fontSize: 18, fontWeight: FontWeight.bold),
+                        ),
+                      ],
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: <Widget>[
+                        Text(
+                          "享极速下载,5T空间等特权",
+                          style: TextStyle(
+                              color: Colors.black, fontWeight: FontWeight.bold),
+                        ),
+                        SizedBox(
+                          width: 4,
+                        ),
+                        SizedBox(
+                          width: 16,
+                          height: 16,
+                          child: CircleAvatar(
+                            backgroundColor: Colors.black,
+                            child: Icon(
+                              Icons.arrow_forward_ios,
+                              color: Colors.white,
+                              size: 12,
+                            ),
+                          ),
+                        )
+                      ],
+                    )
+                  ],
                 ),
               ),
-              Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: <Widget>[
-                  Row(
-                    children: <Widget>[
-                      Text(
-                        "哇—不公平嘎",
-                        style: TextStyle(
-                            fontSize: 20,
-                            color: Colors.black,
-                            fontWeight: FontWeight.bold),
-                      ),
-                      SizedBox(
-                        width: 4,
-                      ),
-                      Image.asset(
-                        R.img_mine_home_identity_common,
-                        width: 18,
-                        height: 16,
-                      ),
-                    ],
-                  ),
-                  SizedBox(
-                    height: 8,
-                  ),
-                  Container(
-                    width: 180,
-                    height: 3,
-                    child: LinearProgressIndicator(
-                      backgroundColor: Colors.grey.withAlpha(50),
-                      value: 0.2,
-                    ),
-                  ),
-                  SizedBox(
-                    height: 8,
-                  ),
-                  Row(
-                    children: <Widget>[
-                      Text(
-                        "100G/2056G",
-                        style:
-                            TextStyle(color: Color(0xffAEAEAE), fontSize: 12),
-                      ),
-                      SizedBox(
-                        width: 6,
-                      ),
-                      Text(
-                        "管理空间",
-                        style: TextStyle(color: Colors.red, fontSize: 12),
-                      ),
-                    ],
-                  )
-                ],
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  Image.asset(
-                    R.img_mine_personal_icon_point,
-                    width: 30,
-                    height: 60,
-                  ),
-                  Text(
-                    "当前0积分",
-                    style: TextStyle(color: Colors.orange, fontSize: 12),
-                  )
-                ],
+              Positioned(
+                left: 100,
+                child: Image.asset(R.img_mine_sapi_sdk_sweep_light),
               )
             ],
           ),
-        ),
-        Stack(
-          children: <Widget>[
-            Container(
-              margin: EdgeInsets.only(left: 8, right: 8, top: 8),
-              height: 68,
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(8),
-                  color: Color(0xffECD9AE)),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: <Widget>[
-                  Row(
-                    children: <Widget>[
-                      Image.asset(
-                        R.img_mine_personal_banner_membership,
-                        height: 24,
-                        width: 28,
-                      ),
-                      SizedBox(
-                        width: 4,
-                      ),
-                      Text(
-                        "开通超级会员",
-                        style: TextStyle(
-                            fontSize: 18, fontWeight: FontWeight.bold),
-                      ),
-                    ],
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    children: <Widget>[
-                      Text(
-                        "享极速下载,5T空间等特权",
-                        style: TextStyle(
-                            color: Colors.black, fontWeight: FontWeight.bold),
-                      ),
-                      SizedBox(
-                        width: 4,
-                      ),
-                      SizedBox(
-                        width: 16,
-                        height: 16,
-                        child: CircleAvatar(
-                          backgroundColor: Colors.black,
-                          child: Icon(
-                            Icons.arrow_forward_ios,
-                            color: Colors.white,
-                            size: 12,
-                          ),
-                        ),
-                      )
-                    ],
-                  )
-                ],
-              ),
-            ),
-            Positioned(
-              left: 100,
-              child: Image.asset(R.img_mine_sapi_sdk_sweep_light),
-            )
-          ],
-        ),
-        SizedBox(height: 6,),
-        _buildCard("网盘功能",true,null)
-      ],
+          SizedBox(height: 6,),
+          _buildCard("网盘功能",true,toolscards),
+          SizedBox(height: 6),
+          _buildCard("更多服务",false,toolscards),
+        ],
+      ),
     );
   }
 
@@ -184,8 +198,9 @@ class MinePage extends StatelessWidget {
       return Container(
         padding: EdgeInsets.all(16),
         margin: EdgeInsets.only(left: 8,right: 8),
-        height: 235,
-        decoration: BoxDecoration(boxShadow: [BoxShadow(blurRadius: 8,color: Colors.grey.withAlpha(80))],borderRadius: BorderRadius.circular(8),color: Colors.white),
+        height: 210,
+        decoration: BoxDecoration(
+            boxShadow: [BoxShadow(blurRadius: 8,color: Colors.grey.withAlpha(80))],borderRadius: BorderRadius.circular(8),color: Colors.white),
         child: Column(
           children: <Widget>[
             Row(
@@ -193,19 +208,20 @@ class MinePage extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: <Widget>[
               Text(title,style: TextStyle(fontSize: 20,color: Colors.black,fontWeight: FontWeight.bold),),
-              isMore ? TextIcon(text: Text("更多"),icon: Icon(Icons.arrow_forward_ios,size: 12,color: Colors.grey,),icon_direction: TextIcon.TO_RIGHT,padding: 3,):null
+              isMore ? TextIcon(text: Text("更多"),icon: Icon(Icons.arrow_forward_ios,size: 12,color: Colors.grey,),icon_direction: TextIcon.TO_RIGHT,padding: 3,):Text("")
               ],),
-            Container(
-              height: 180,
-              child:  GridView.builder(
-                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 4, mainAxisSpacing: 8, crossAxisSpacing: 8),
-                itemBuilder: (context, index) {
-                  return buildCard(toolscards[index]);
-                },
-                itemCount: 6,
-                shrinkWrap: false,
-                physics: NeverScrollableScrollPhysics(),
+            Flexible(
+              child: Container(
+                child:  GridView.builder(
+                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 4, mainAxisSpacing: 8, crossAxisSpacing: 8),
+                  itemBuilder: (context, index) {
+                    return buildCard(cards[index]);
+                  },
+                  itemCount: 6,
+                  shrinkWrap: false,
+                  physics: NeverScrollableScrollPhysics(),
+                ),
               ),
             )
           ],
@@ -227,7 +243,7 @@ class MinePage extends StatelessWidget {
 
   Widget buildCard(CardInfo card) {
     return Container(
-      height: 60,
+      margin: EdgeInsets.only(top: 16),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
@@ -237,4 +253,7 @@ class MinePage extends StatelessWidget {
       ),
     );
   }
+
+
+
 }
