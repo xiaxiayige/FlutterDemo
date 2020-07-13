@@ -14,54 +14,145 @@ class MinePage extends StatefulWidget {
   _MinePageState createState() => _MinePageState();
 }
 
-class _MinePageState extends State<MinePage> with SingleTickerProviderStateMixin {
-  List<CardInfo> toolscards=[
-    CardInfo(R.img_service_album_icon,"相册备份",""),
-    CardInfo(R.img_service_album_icon,"回收站",""),
-    CardInfo(R.img_service_album_icon,"我的会员",""),
-    CardInfo(R.img_service_album_icon,"活动中心",""),
-    CardInfo(R.img_service_album_icon,"小程序",""),
-    CardInfo(R.img_service_album_icon,"我的分享",""),
-    CardInfo(R.img_service_album_icon,"只能设备",""),
-    CardInfo(R.img_service_album_icon,"文件清理",""),
+class _MinePageState extends State<MinePage>
+    with SingleTickerProviderStateMixin {
+  List<CardInfo> toolscards = [
+    CardInfo(R.img_service_album_icon, "相册备份", ""),
+    CardInfo(R.img_service_album_icon, "回收站", ""),
+    CardInfo(R.img_service_album_icon, "我的会员", ""),
+    CardInfo(R.img_service_album_icon, "活动中心", ""),
+    CardInfo(R.img_service_album_icon, "小程序", ""),
+    CardInfo(R.img_service_album_icon, "我的分享", ""),
+    CardInfo(R.img_service_album_icon, "智能设备", ""),
+    CardInfo(R.img_service_album_icon, "文件清理", ""),
   ];
 
-  List<CardInfo> moreService=[
-    CardInfo(R.img_service_album_icon,"免费问医生",""),
-    CardInfo(R.img_service_album_icon,"借现金",""),
-    CardInfo(R.img_service_album_icon,"冲印商城",""),
-    CardInfo(R.img_service_album_icon,"搜一搜",""),
-    CardInfo(R.img_service_album_icon,"免流量卡",""),
-    CardInfo(R.img_service_album_icon,"领无限空间",""),
+  List<CardInfo> moreService = [
+    CardInfo(R.img_service_album_icon, "免费问医生", ""),
+    CardInfo(R.img_service_album_icon, "借现金", ""),
+    CardInfo(R.img_service_album_icon, "冲印商城", ""),
+    CardInfo(R.img_service_album_icon, "搜一搜", ""),
+    CardInfo(R.img_service_album_icon, "免流量卡", ""),
+    CardInfo(R.img_service_album_icon, "领无限空间", ""),
   ];
 
-  double progress=0;
-
-  Animation<double>  tween ;
+  double progress = 0;
+  double opacity = 1;
+  Animation<double> tween;
+  var titleHeight=50;
+  double  margingTitleTop=50;
   AnimationController _animationController;
-  
+
   @override
   void initState() {
     super.initState();
-    _animationController=AnimationController(duration: Duration(milliseconds: 1000),vsync: this);
-    tween = Tween<double>(begin: 0,end: 350).animate(_animationController);
+    _animationController = AnimationController(
+        duration: Duration(milliseconds: 1200), vsync: this);
+    tween = Tween<double>(begin: 0, end: 800).animate(_animationController);
     _animationController.repeat();
   }
 
   @override
   void dispose() {
-    // TODO: implement dispose
     _animationController.dispose();
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
+    return Stack(
+      children: <Widget>[
+        _buildBody(),
+        Opacity(opacity: opacity,
+          child: Container(
+            height: 50,
+            decoration: BoxDecoration(boxShadow:[BoxShadow(color: Colors.grey.withAlpha(10),offset: Offset(0,3))],color: Colors.white),
+            child: Row(
+              children: <Widget>[
+                Image.asset(R.img_mine_icon_scan_click, width:30,)
+              ],
+            ),
+          ),)
+      ],
+    );
+  }
+
+  Widget _buildCard(String title, bool isMore, List<CardInfo> cards) {
+    return Container(
+      padding: EdgeInsets.all(16),
+      margin: EdgeInsets.only(left: 8, right: 8),
+      height: 210,
+      decoration: BoxDecoration(
+          boxShadow: [
+            BoxShadow(blurRadius: 8, color: Colors.grey.withAlpha(80))
+          ], borderRadius: BorderRadius.circular(8), color: Colors.white),
+      child: Column(
+        children: <Widget>[
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: <Widget>[
+              Text(title, style: TextStyle(fontSize: 20,
+                  color: Colors.black,
+                  fontWeight: FontWeight.bold),),
+              isMore ? TextIcon(text: Text("更多"),
+                icon: Icon(
+                  Icons.arrow_forward_ios, size: 12, color: Colors.grey,),
+                icon_direction: TextIcon.TO_RIGHT,
+                padding: 3,) : Text("")
+            ],),
+          Flexible(
+            child: Container(
+              child: GridView.builder(
+                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 4, mainAxisSpacing: 8, crossAxisSpacing: 8),
+                itemBuilder: (context, index) {
+                  return buildItemCard(cards[index]);
+                },
+                itemCount: cards.length,
+                shrinkWrap: false,
+                physics: NeverScrollableScrollPhysics(),
+              ),
+            ),
+          )
+        ],
+      ),
+    );
+  }
+
+  Widget buildCardWidget(CardInfo cardInfo) {
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: <Widget>[
+        Image.asset(cardInfo.img, width: 35, height: 35,),
+        SizedBox(height: 4,),
+        Text(cardInfo.title, style: TextStyle(
+            color: Colors.black, fontSize: 16, fontWeight: FontWeight.bold),),
+        SizedBox(height: 2,),
+      ],
+    );
+  }
+
+  Widget buildItemCard(CardInfo card) {
+    return Container(
+      margin: EdgeInsets.only(top: 16),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: <Widget>[
+          Image.asset(card.img, width: 30, height: 40,),
+          Text(card.title)
+        ],
+      ),
+    );
+  }
+
+  Widget _buildBody() {
     return SingleChildScrollView(
       padding: EdgeInsets.only(bottom: 8),
       child: Column(
         children: <Widget>[
           Container(
+            margin: EdgeInsets.only(top: margingTitleTop),
             height: 125,
             color: Colors.white,
             child: Row(
@@ -116,7 +207,7 @@ class _MinePageState extends State<MinePage> with SingleTickerProviderStateMixin
                         Text(
                           "100G/2056G",
                           style:
-                              TextStyle(color: Color(0xffAEAEAE), fontSize: 12),
+                          TextStyle(color: Color(0xffAEAEAE), fontSize: 12),
                         ),
                         SizedBox(
                           width: 6,
@@ -204,80 +295,20 @@ class _MinePageState extends State<MinePage> with SingleTickerProviderStateMixin
                 ),
               ),
               AnimatedBuilder(
-              animation:tween,
-                builder:(BuildContext context, Widget child){
+                animation: tween,
+                builder: (BuildContext context, Widget child) {
                   return Positioned(
                     left: tween.value,
                     child: Image.asset(R.img_mine_sapi_sdk_sweep_light),
                   );
-                } ,
+                },
               )
             ],
           ),
           SizedBox(height: 6,),
-          _buildCard("网盘功能",true,toolscards),
+          _buildCard("网盘功能", true, toolscards),
           SizedBox(height: 6),
-          _buildCard("更多服务",false,toolscards),
-        ],
-      ),
-    );
-  }
-
-  Widget _buildCard(String title,bool isMore,List<CardInfo> cards){
-      return Container(
-        padding: EdgeInsets.all(16),
-        margin: EdgeInsets.only(left: 8,right: 8),
-        height: 210,
-        decoration: BoxDecoration(
-            boxShadow: [BoxShadow(blurRadius: 8,color: Colors.grey.withAlpha(80))],borderRadius: BorderRadius.circular(8),color: Colors.white),
-        child: Column(
-          children: <Widget>[
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: <Widget>[
-              Text(title,style: TextStyle(fontSize: 20,color: Colors.black,fontWeight: FontWeight.bold),),
-              isMore ? TextIcon(text: Text("更多"),icon: Icon(Icons.arrow_forward_ios,size: 12,color: Colors.grey,),icon_direction: TextIcon.TO_RIGHT,padding: 3,):Text("")
-              ],),
-            Flexible(
-              child: Container(
-                child:  GridView.builder(
-                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 4, mainAxisSpacing: 8, crossAxisSpacing: 8),
-                  itemBuilder: (context, index) {
-                    return buildCard(cards[index]);
-                  },
-                  itemCount: 6,
-                  shrinkWrap: false,
-                  physics: NeverScrollableScrollPhysics(),
-                ),
-              ),
-            )
-          ],
-        ),
-      );
-  }
-
-  Widget buildCardWidget(CardInfo cardInfo) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: <Widget>[
-        Image.asset(cardInfo.img,width: 35,height: 35,),
-        SizedBox(height: 4,),
-        Text(cardInfo.title,style: TextStyle(color: Colors.black,fontSize: 16,fontWeight: FontWeight.bold),),
-        SizedBox(height: 2,),
-      ],
-    );
-  }
-
-  Widget buildCard(CardInfo card) {
-    return Container(
-      margin: EdgeInsets.only(top: 16),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: <Widget>[
-          Image.asset(card.img,width: 30,height: 40,),
-          Text(card.title)
+          _buildCard("更多服务", false, moreService),
         ],
       ),
     );

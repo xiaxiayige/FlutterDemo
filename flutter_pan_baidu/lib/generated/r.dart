@@ -1,5 +1,6 @@
 class R {
 	static const String img_mine_home_identity_common = "assets/img/mine/home_identity_common.png";
+	static const String img_mine_icon_scan_click = "assets/img/mine/icon_scan_click.png";
 	static const String img_mine_mine_head = "assets/img/mine/mine_head.jpg";
 	static const String img_mine_personal_banner_membership = "assets/img/mine/personal_banner_membership.png";
 	static const String img_mine_personal_icon_point = "assets/img/mine/personal_icon_point.png";
