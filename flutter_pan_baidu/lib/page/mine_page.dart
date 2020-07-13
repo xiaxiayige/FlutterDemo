@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutterpanbaidu/bean/bean.dart';
 import 'package:flutterpanbaidu/generated/r.dart';
@@ -7,8 +8,13 @@ import 'package:flutterpanbaidu/tools/common_widget.dart';
 /****
  * 我的
  */
-class MinePage extends StatelessWidget {
+class MinePage extends StatefulWidget {
 
+  @override
+  _MinePageState createState() => _MinePageState();
+}
+
+class _MinePageState extends State<MinePage> with SingleTickerProviderStateMixin {
   List<CardInfo> toolscards=[
     CardInfo(R.img_service_album_icon,"相册备份",""),
     CardInfo(R.img_service_album_icon,"回收站",""),
@@ -28,6 +34,26 @@ class MinePage extends StatelessWidget {
     CardInfo(R.img_service_album_icon,"免流量卡",""),
     CardInfo(R.img_service_album_icon,"领无限空间",""),
   ];
+
+  double progress=0;
+
+  Animation<double>  tween ;
+  AnimationController _animationController;
+  
+  @override
+  void initState() {
+    super.initState();
+    _animationController=AnimationController(duration: Duration(milliseconds: 1000),vsync: this);
+    tween = Tween<double>(begin: 0,end: 350).animate(_animationController);
+    _animationController.repeat();
+  }
+
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    _animationController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -177,9 +203,14 @@ class MinePage extends StatelessWidget {
                   ],
                 ),
               ),
-              Positioned(
-                left: 100,
-                child: Image.asset(R.img_mine_sapi_sdk_sweep_light),
+              AnimatedBuilder(
+              animation:tween,
+                builder:(BuildContext context, Widget child){
+                  return Positioned(
+                    left: tween.value,
+                    child: Image.asset(R.img_mine_sapi_sdk_sweep_light),
+                  );
+                } ,
               )
             ],
           ),
@@ -191,8 +222,6 @@ class MinePage extends StatelessWidget {
       ),
     );
   }
-
-
 
   Widget _buildCard(String title,bool isMore,List<CardInfo> cards){
       return Container(
@@ -253,7 +282,4 @@ class MinePage extends StatelessWidget {
       ),
     );
   }
-
-
-
 }
