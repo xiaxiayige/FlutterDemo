@@ -40,8 +40,9 @@ class _MinePageState extends State<MinePage>
   double opacity = 1;
   Animation<double> tween;
   var titleHeight=50;
-  double  margingTitleTop=50;
+  double  margingTitleTop=0;
   AnimationController _animationController;
+  ScrollController scrollController;
 
   @override
   void initState() {
@@ -50,6 +51,11 @@ class _MinePageState extends State<MinePage>
         duration: Duration(milliseconds: 1200), vsync: this);
     tween = Tween<double>(begin: 0, end: 800).animate(_animationController);
     _animationController.repeat();
+
+    scrollController= ScrollController();
+    scrollController.addListener(() {
+
+    });
   }
 
   @override
@@ -63,17 +69,42 @@ class _MinePageState extends State<MinePage>
     return Stack(
       children: <Widget>[
         _buildBody(),
-        Opacity(opacity: opacity,
-          child: Container(
-            height: 50,
-            decoration: BoxDecoration(boxShadow:[BoxShadow(color: Colors.grey.withAlpha(10),offset: Offset(0,3))],color: Colors.white),
-            child: Row(
-              children: <Widget>[
-                Image.asset(R.img_mine_icon_scan_click, width:30,)
-              ],
-            ),
-          ),)
+        _buildTitleBar()
       ],
+    );
+  }
+
+  Widget _buildTitleBar() {
+    return Container(
+      height: 50,
+      decoration: BoxDecoration(boxShadow:[BoxShadow(color: Colors.grey.withAlpha(opacity.toInt()*10),offset: Offset(0,3))],color: Colors.white),
+      child: Stack(
+        children: <Widget>[
+          Row(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: <Widget>[
+              SizedBox(width: 12,),
+              Image.asset(R.img_mine_bg_dn_my_scan, width:30,),
+              SizedBox(width: 8,),
+              Text("扫一扫",style: TextStyle(color: Colors.black,fontSize: 14,fontWeight: FontWeight.bold),),
+              Flexible(
+                child: Align(
+                  alignment: Alignment.centerRight,
+                  child: Padding(
+                      padding: EdgeInsets.only(right: 12),
+                      child: Image.asset(R.img_mine_bg_dn_my_setting,width: 30,)),
+                ),
+              )
+            ],
+          ),
+          Opacity(
+            opacity: opacity,
+            child: Align(
+                alignment: Alignment.center,
+                child: Text("哇—不公平嘎",style: TextStyle(color: Colors.black,fontSize: 18,fontWeight: FontWeight.bold),)),
+          )
+        ],
+      ),
     );
   }
 
@@ -148,12 +179,13 @@ class _MinePageState extends State<MinePage>
 
   Widget _buildBody() {
     return SingleChildScrollView(
+      controller: scrollController,
       padding: EdgeInsets.only(bottom: 8),
       child: Column(
         children: <Widget>[
           Container(
-            margin: EdgeInsets.only(top: margingTitleTop),
-            height: 125,
+            margin: EdgeInsets.only(top: 50),
+            height: 80,
             color: Colors.white,
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
