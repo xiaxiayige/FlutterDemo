@@ -393,9 +393,65 @@ class _MinePageState extends State<MinePage>
           _buildCard("网盘功能", true, toolscards),
           SizedBox(height: 6),
           _buildCard("更多服务", false, moreService),
+          Container(
+            padding: EdgeInsets.all(16),
+            margin: EdgeInsets.all(8),
+            height: 140,
+            decoration: BoxDecoration(color: Colors.white,borderRadius: BorderRadius.all(Radius.circular(8)),boxShadow: [
+              BoxShadow(blurRadius: 8, color: Colors.grey.withAlpha(80))
+            ]),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: <Widget>[
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: <Widget>[
+                      Text("主题模式",style: TextStyle(color: Colors.black,fontWeight: FontWeight.bold,fontSize: 18),),
+                      TextIcon(
+                        text: Text("银翼白",style: TextStyle(color: Colors.grey,fontSize: 16),),
+                        icon: Icon(Icons.arrow_forward_ios,size: 12,color: Colors.grey.withAlpha(90),),
+                        padding: 4,
+                        icon_direction: TextIcon.TO_RIGHT,)
+                    ],
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: <Widget>[
+                    Text("设置",style: TextStyle(color: Colors.black,fontWeight: FontWeight.bold,fontSize: 18),),
+                    TextIcon(
+                      text: Text("",style: TextStyle(color: Colors.grey,fontSize: 16),),
+                      icon: Icon(Icons.arrow_forward_ios,size: 12,color: Colors.grey.withAlpha(90),),
+                      padding: 4,
+                      icon_direction: TextIcon.TO_RIGHT,)
+                  ],
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: <Widget>[
+                    Text("用户反馈",style: TextStyle(color: Colors.black,fontWeight: FontWeight.bold,fontSize: 18),),
+                    TextIcon(
+                      text: Text("",style: TextStyle(color: Colors.grey,fontSize: 16),),
+                      icon: Icon(Icons.arrow_forward_ios,size: 12,color: Colors.grey.withAlpha(90),),
+                      padding: 4,
+                      icon_direction: TextIcon.TO_RIGHT,)
+                  ],
+                )
+              ],
+            ),
+          ),
+         _buildExitButton()
         ],
       ),
     );
+  }
+
+  Container _buildExitButton() {
+    return Container(
+         margin: EdgeInsets.only(left: 8,right: 8),
+         decoration: BoxDecoration(color: Colors.white,borderRadius: BorderRadius.all(Radius.circular(8))),
+         height: 50,
+         child: Center(child: Text("退出登录",style: TextStyle(color: Colors.redAccent,fontSize: 16,fontWeight: FontWeight.bold),)),
+       );
   }
 
   void _onScroll(offset) {
