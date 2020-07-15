@@ -9,10 +9,11 @@ import 'package:flutterpanbaidu/tools/common_widget.dart';
  * 我的
  */
 class MinePage extends StatefulWidget {
-
   @override
   _MinePageState createState() => _MinePageState();
 }
+
+const SCROLL_MAX_VALUE = 50; //滑动最大距离
 
 class _MinePageState extends State<MinePage>
     with SingleTickerProviderStateMixin {
@@ -38,9 +39,10 @@ class _MinePageState extends State<MinePage>
 
   double progress = 0;
   double opacity = 1;
+  int shadowopacity = 0;
   Animation<double> tween;
-  var titleHeight=50;
-  double  margingTitleTop=0;
+  var titleHeight = 50;
+  double margingTitleTop = 0;
   AnimationController _animationController;
   ScrollController scrollController;
 
@@ -52,9 +54,9 @@ class _MinePageState extends State<MinePage>
     tween = Tween<double>(begin: 0, end: 800).animate(_animationController);
     _animationController.repeat();
 
-    scrollController= ScrollController();
+    scrollController = ScrollController();
     scrollController.addListener(() {
-
+      _onScroll(scrollController.offset);
     });
   }
 
@@ -67,42 +69,64 @@ class _MinePageState extends State<MinePage>
   @override
   Widget build(BuildContext context) {
     return Stack(
-      children: <Widget>[
-        _buildBody(),
-        _buildTitleBar()
-      ],
+      children: <Widget>[_buildBody(), _buildTitleBar()],
     );
   }
 
   Widget _buildTitleBar() {
     return Container(
       height: 50,
-      decoration: BoxDecoration(boxShadow:[BoxShadow(color: Colors.grey.withAlpha(opacity.toInt()*10),offset: Offset(0,3))],color: Colors.white),
+      decoration: BoxDecoration(boxShadow: [
+        BoxShadow(
+            color: Colors.grey.withAlpha(shadowopacity), offset: Offset(0, 2)),
+        BoxShadow(
+          color: Colors.white,
+        )
+      ], color: Colors.white),
       child: Stack(
         children: <Widget>[
           Row(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
-              SizedBox(width: 12,),
-              Image.asset(R.img_mine_bg_dn_my_scan, width:30,),
-              SizedBox(width: 8,),
-              Text("扫一扫",style: TextStyle(color: Colors.black,fontSize: 14,fontWeight: FontWeight.bold),),
+              SizedBox(
+                width: 12,
+              ),
+              Image.asset(
+                R.img_mine_bg_dn_my_scan,
+                width: 30,
+              ),
+              SizedBox(
+                width: 8,
+              ),
+              Text(
+                "扫一扫",
+                style: TextStyle(
+                    color: Colors.black,
+                    fontSize: 14,
+                    fontWeight: FontWeight.bold),
+              ),
               Flexible(
                 child: Align(
                   alignment: Alignment.centerRight,
                   child: Padding(
                       padding: EdgeInsets.only(right: 12),
-                      child: Image.asset(R.img_mine_bg_dn_my_setting,width: 30,)),
+                      child: Image.asset(
+                        R.img_mine_bg_dn_my_setting,
+                        width: 30,
+                      )),
                 ),
               )
             ],
           ),
-          Opacity(
-            opacity: opacity,
-            child: Align(
-                alignment: Alignment.center,
-                child: Text("哇—不公平嘎",style: TextStyle(color: Colors.black,fontSize: 18,fontWeight: FontWeight.bold),)),
-          )
+          Align(
+              alignment: Alignment.center,
+              child: Text(
+                "哇—不公平嘎",
+                style: TextStyle(
+                    color: Colors.black.withOpacity(opacity),
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold),
+              ))
         ],
       ),
     );
@@ -113,25 +137,36 @@ class _MinePageState extends State<MinePage>
       padding: EdgeInsets.all(16),
       margin: EdgeInsets.only(left: 8, right: 8),
       height: 210,
-      decoration: BoxDecoration(
-          boxShadow: [
-            BoxShadow(blurRadius: 8, color: Colors.grey.withAlpha(80))
-          ], borderRadius: BorderRadius.circular(8), color: Colors.white),
+      decoration: BoxDecoration(boxShadow: [
+        BoxShadow(blurRadius: 8, color: Colors.grey.withAlpha(80))
+      ], borderRadius: BorderRadius.circular(8), color: Colors.white),
       child: Column(
         children: <Widget>[
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
-              Text(title, style: TextStyle(fontSize: 20,
-                  color: Colors.black,
-                  fontWeight: FontWeight.bold),),
-              isMore ? TextIcon(text: Text("更多"),
-                icon: Icon(
-                  Icons.arrow_forward_ios, size: 12, color: Colors.grey,),
-                icon_direction: TextIcon.TO_RIGHT,
-                padding: 3,) : Text("")
-            ],),
+              Text(
+                title,
+                style: TextStyle(
+                    fontSize: 20,
+                    color: Colors.black,
+                    fontWeight: FontWeight.bold),
+              ),
+              isMore
+                  ? TextIcon(
+                      text: Text("更多"),
+                      icon: Icon(
+                        Icons.arrow_forward_ios,
+                        size: 12,
+                        color: Colors.grey,
+                      ),
+                      icon_direction: TextIcon.TO_RIGHT,
+                      padding: 3,
+                    )
+                  : Text("")
+            ],
+          ),
           Flexible(
             child: Container(
               child: GridView.builder(
@@ -155,11 +190,22 @@ class _MinePageState extends State<MinePage>
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: <Widget>[
-        Image.asset(cardInfo.img, width: 35, height: 35,),
-        SizedBox(height: 4,),
-        Text(cardInfo.title, style: TextStyle(
-            color: Colors.black, fontSize: 16, fontWeight: FontWeight.bold),),
-        SizedBox(height: 2,),
+        Image.asset(
+          cardInfo.img,
+          width: 35,
+          height: 35,
+        ),
+        SizedBox(
+          height: 4,
+        ),
+        Text(
+          cardInfo.title,
+          style: TextStyle(
+              color: Colors.black, fontSize: 16, fontWeight: FontWeight.bold),
+        ),
+        SizedBox(
+          height: 2,
+        ),
       ],
     );
   }
@@ -170,7 +216,11 @@ class _MinePageState extends State<MinePage>
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
-          Image.asset(card.img, width: 30, height: 40,),
+          Image.asset(
+            card.img,
+            width: 30,
+            height: 40,
+          ),
           Text(card.title)
         ],
       ),
@@ -239,7 +289,7 @@ class _MinePageState extends State<MinePage>
                         Text(
                           "100G/2056G",
                           style:
-                          TextStyle(color: Color(0xffAEAEAE), fontSize: 12),
+                              TextStyle(color: Color(0xffAEAEAE), fontSize: 12),
                         ),
                         SizedBox(
                           width: 6,
@@ -337,12 +387,33 @@ class _MinePageState extends State<MinePage>
               )
             ],
           ),
-          SizedBox(height: 6,),
+          SizedBox(
+            height: 6,
+          ),
           _buildCard("网盘功能", true, toolscards),
           SizedBox(height: 6),
           _buildCard("更多服务", false, moreService),
         ],
       ),
     );
+  }
+
+  void _onScroll(offset) {
+    double alpha = offset / SCROLL_MAX_VALUE;
+    if (alpha < 0) {
+      alpha = 0;
+    } else if (alpha > 1) {
+      alpha = 1;
+    }
+
+    if (offset > 0) {
+      shadowopacity = 50;
+    } else {
+      shadowopacity = 0;
+    }
+
+    setState(() {
+      opacity = alpha;
+    });
   }
 }
