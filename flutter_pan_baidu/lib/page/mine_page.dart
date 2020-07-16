@@ -16,7 +16,7 @@ class MinePage extends StatefulWidget {
 const SCROLL_MAX_VALUE = 50; //滑动最大距离
 
 class _MinePageState extends State<MinePage>
-    with SingleTickerProviderStateMixin {
+    with TickerProviderStateMixin {
   List<CardInfo> toolscards = [
     CardInfo(R.img_service_album_icon, "相册备份", ""),
     CardInfo(R.img_service_album_icon, "回收站", ""),
@@ -45,6 +45,11 @@ class _MinePageState extends State<MinePage>
   double margingTitleTop = 0;
   AnimationController _animationController;
   ScrollController scrollController;
+  Widget sweep_light = Image.asset(R.img_mine_sapi_sdk_sweep_light);
+
+  AnimationController sildeAnimationController;
+  Animation<Offset> sideAnimation;
+  Animation<double> scalAnimation;
 
   @override
   void initState() {
@@ -58,11 +63,27 @@ class _MinePageState extends State<MinePage>
     scrollController.addListener(() {
       _onScroll(scrollController.offset);
     });
+
+    sildeAnimationController = AnimationController(duration: Duration(milliseconds: 1200), vsync: this);
+    sideAnimation = Tween<Offset>(begin: Offset(0, 0), end: Offset(0, 0.1))
+        .animate(CurvedAnimation(
+      parent: sildeAnimationController,
+      curve: Curves.elasticIn,
+    ));
+    sildeAnimationController.repeat(reverse: true);
+
+    scalAnimation = Tween<double>(begin: 1,end: 1.2)
+        .animate(CurvedAnimation(
+      parent: sildeAnimationController,
+      curve: Curves.elasticIn,
+    ));
+
   }
 
   @override
   void dispose() {
     _animationController.dispose();
+    sildeAnimationController.dispose();
     super.dispose();
   }
 
@@ -305,11 +326,7 @@ class _MinePageState extends State<MinePage>
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
-                    Image.asset(
-                      R.img_mine_personal_icon_point,
-                      width: 30,
-                      height: 60,
-                    ),
+                    _buildJiFenWidget(),
                     Text(
                       "当前0积分",
                       style: TextStyle(color: Colors.orange, fontSize: 12),
@@ -381,7 +398,7 @@ class _MinePageState extends State<MinePage>
                 builder: (BuildContext context, Widget child) {
                   return Positioned(
                     left: tween.value,
-                    child: Image.asset(R.img_mine_sapi_sdk_sweep_light),
+                    child: sweep_light,
                   );
                 },
               )
@@ -397,49 +414,94 @@ class _MinePageState extends State<MinePage>
             padding: EdgeInsets.all(16),
             margin: EdgeInsets.all(8),
             height: 140,
-            decoration: BoxDecoration(color: Colors.white,borderRadius: BorderRadius.all(Radius.circular(8)),boxShadow: [
-              BoxShadow(blurRadius: 8, color: Colors.grey.withAlpha(80))
-            ]),
+            decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.all(Radius.circular(8)),
+                boxShadow: [
+                  BoxShadow(blurRadius: 8, color: Colors.grey.withAlpha(80))
+                ]),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: <Widget>[
-                      Text("主题模式",style: TextStyle(color: Colors.black,fontWeight: FontWeight.bold,fontSize: 18),),
-                      TextIcon(
-                        text: Text("银翼白",style: TextStyle(color: Colors.grey,fontSize: 16),),
-                        icon: Icon(Icons.arrow_forward_ios,size: 12,color: Colors.grey.withAlpha(90),),
-                        padding: 4,
-                        icon_direction: TextIcon.TO_RIGHT,)
-                    ],
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: <Widget>[
-                    Text("设置",style: TextStyle(color: Colors.black,fontWeight: FontWeight.bold,fontSize: 18),),
+                    Text(
+                      "主题模式",
+                      style: TextStyle(
+                          color: Colors.black,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 18),
+                    ),
                     TextIcon(
-                      text: Text("",style: TextStyle(color: Colors.grey,fontSize: 16),),
-                      icon: Icon(Icons.arrow_forward_ios,size: 12,color: Colors.grey.withAlpha(90),),
+                      text: Text(
+                        "银翼白",
+                        style: TextStyle(color: Colors.grey, fontSize: 16),
+                      ),
+                      icon: Icon(
+                        Icons.arrow_forward_ios,
+                        size: 12,
+                        color: Colors.grey.withAlpha(90),
+                      ),
                       padding: 4,
-                      icon_direction: TextIcon.TO_RIGHT,)
+                      icon_direction: TextIcon.TO_RIGHT,
+                    )
                   ],
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: <Widget>[
-                    Text("用户反馈",style: TextStyle(color: Colors.black,fontWeight: FontWeight.bold,fontSize: 18),),
+                    Text(
+                      "设置",
+                      style: TextStyle(
+                          color: Colors.black,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 18),
+                    ),
                     TextIcon(
-                      text: Text("",style: TextStyle(color: Colors.grey,fontSize: 16),),
-                      icon: Icon(Icons.arrow_forward_ios,size: 12,color: Colors.grey.withAlpha(90),),
+                      text: Text(
+                        "",
+                        style: TextStyle(color: Colors.grey, fontSize: 16),
+                      ),
+                      icon: Icon(
+                        Icons.arrow_forward_ios,
+                        size: 12,
+                        color: Colors.grey.withAlpha(90),
+                      ),
                       padding: 4,
-                      icon_direction: TextIcon.TO_RIGHT,)
+                      icon_direction: TextIcon.TO_RIGHT,
+                    )
+                  ],
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: <Widget>[
+                    Text(
+                      "用户反馈",
+                      style: TextStyle(
+                          color: Colors.black,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 18),
+                    ),
+                    TextIcon(
+                      text: Text(
+                        "",
+                        style: TextStyle(color: Colors.grey, fontSize: 16),
+                      ),
+                      icon: Icon(
+                        Icons.arrow_forward_ios,
+                        size: 12,
+                        color: Colors.grey.withAlpha(90),
+                      ),
+                      padding: 4,
+                      icon_direction: TextIcon.TO_RIGHT,
+                    )
                   ],
                 )
               ],
             ),
           ),
-         _buildExitButton()
+          _buildExitButton()
         ],
       ),
     );
@@ -447,11 +509,18 @@ class _MinePageState extends State<MinePage>
 
   Container _buildExitButton() {
     return Container(
-         margin: EdgeInsets.only(left: 8,right: 8),
-         decoration: BoxDecoration(color: Colors.white,borderRadius: BorderRadius.all(Radius.circular(8))),
-         height: 50,
-         child: Center(child: Text("退出登录",style: TextStyle(color: Colors.redAccent,fontSize: 16,fontWeight: FontWeight.bold),)),
-       );
+      margin: EdgeInsets.only(left: 8, right: 8),
+      decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.all(Radius.circular(8))),
+      height: 50,
+      child: Center(
+          child: Text(
+        "退出登录",
+        style: TextStyle(
+            color: Colors.redAccent, fontSize: 16, fontWeight: FontWeight.bold),
+      )),
+    );
   }
 
   void _onScroll(offset) {
@@ -471,5 +540,22 @@ class _MinePageState extends State<MinePage>
     setState(() {
       opacity = alpha;
     });
+  }
+
+  _buildJiFenWidget() {
+    return SlideTransition(
+      position: sideAnimation,
+      child: Padding(
+        padding: EdgeInsets.all(4),
+        child: ScaleTransition(
+          scale: scalAnimation,
+          child: Image.asset(
+            R.img_mine_personal_icon_point,
+            width: 30,
+            height: 60,
+          ),
+        ),
+      ),
+    );
   }
 }
