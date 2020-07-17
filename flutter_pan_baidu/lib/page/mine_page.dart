@@ -77,7 +77,6 @@ class _MinePageState extends State<MinePage>
       parent: sildeAnimationController,
       curve: Curves.elasticIn,
     ));
-
   }
 
   @override
@@ -545,15 +544,12 @@ class _MinePageState extends State<MinePage>
   _buildJiFenWidget() {
     return SlideTransition(
       position: sideAnimation,
-      child: Padding(
-        padding: EdgeInsets.all(4),
-        child: ScaleTransition(
-          scale: scalAnimation,
-          child: Image.asset(
-            R.img_mine_personal_icon_point,
-            width: 30,
-            height: 60,
-          ),
+      child: ScaleTransition(
+        scale: scalAnimation,
+        child: Image.asset(
+          R.img_mine_personal_icon_point,
+          width: 30,
+          height: 60,
         ),
       ),
     );

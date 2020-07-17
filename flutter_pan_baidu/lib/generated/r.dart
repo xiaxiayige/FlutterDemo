@@ -10,7 +10,9 @@ class R {
 	static const String img_mine_sapi_sdk_sweep_light = "assets/img/mine/sapi_sdk_sweep_light.png";
 	static const String img_bg_dn_audio_album_null_new_enter_nor = "assets/img/bg_dn_audio_album_null_new_enter_nor.png";
 	static const String img_bg_dn_common_titlebar_btn_add = "assets/img/bg_dn_common_titlebar_btn_add.png";
+	static const String img_bg_dn_common_titlebar_btn_address = "assets/img/bg_dn_common_titlebar_btn_address.png";
 	static const String img_bg_dn_common_titlebar_btn_transfer_small = "assets/img/bg_dn_common_titlebar_btn_transfer_small.png";
+	static const String img_bg_dn_friend_titlebar_icon_plane_normal = "assets/img/bg_dn_friend_titlebar_icon_plane_normal.png";
 	static const String img_bottombar_btn_discovery_pre = "assets/img/bottombar_btn_discovery_pre.png";
 	static const String img_bottombar_btn_file_pre = "assets/img/bottombar_btn_file_pre.png";
 	static const String img_bottombar_btn_home_pre = "assets/img/bottombar_btn_home_pre.png";
