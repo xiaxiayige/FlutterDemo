@@ -93,7 +93,7 @@ class SharePage extends StatelessWidget {
                           _buildItem(R.img_share_share_link_guide_icon,"管理我的分享","查看已发出的分享详情","06-04 15:14"),
                           _buildItem(R.img_share_youa_logo,"一刻相册","恭喜你获得永久无限空间","06-04 15:14"),
                           _buildItem(R.img_share_item_new_follow_icon,"新好友","平安秘诀网huaw、ml加你为好友了","06-04 15:14"),
-                          _buildItem(R.img_share_share_link_guide_icon,"给朋友分享文件","立即体验全新百度网盘","06-04 15:14"),
+                          _buildItem(R.img_share_item_share_guide_icon_normal,"给朋友分享文件","立即体验全新百度网盘","06-04 15:14"),
                       ],),
                     )
                   ],
