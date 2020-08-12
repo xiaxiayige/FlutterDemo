@@ -54,6 +54,7 @@ class _FragmentContainerState extends State<FragmentContainer> {
     bool s=a.length==0;
     return SafeArea(
       child: Scaffold(
+        backgroundColor: Color(0xffFBFBFB),
         body: bodyWidget,
         bottomNavigationBar: BottomNavigationBar(
           items: [
@@ -111,6 +112,8 @@ class _FragmentContainerState extends State<FragmentContainer> {
           showSelectedLabels: true,
           showUnselectedLabels: true,
           currentIndex: currentPosition,
+          backgroundColor: Colors.white,
+          elevation: 0,
         ),
       ),
     );

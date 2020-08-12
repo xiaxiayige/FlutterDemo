@@ -170,7 +170,6 @@ class HomePage extends StatelessWidget {
             ],),
           ),
         ),
-
       ],
     );
   }

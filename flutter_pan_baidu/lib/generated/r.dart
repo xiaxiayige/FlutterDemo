@@ -8,6 +8,14 @@ class R {
 	static const String img_mine_personal_icon_point = "assets/img/mine/personal_icon_point.png";
 	static const String img_mine_personal_membercenter_bg_pressed = "assets/img/mine/personal_membercenter_bg_pressed.png";
 	static const String img_mine_sapi_sdk_sweep_light = "assets/img/mine/sapi_sdk_sweep_light.png";
+	static const String service_yingge_icon_a = "assets/service_yingge_icon_a.png";
+	static const String img_share_item_new_follow_icon = "assets/img/share/item_new_follow_icon.png";
+	static const String img_share_item_share_guide_icon_normal = "assets/img/share/item_share_guide_icon_normal.png";
+	static const String img_share_share_link_guide_icon = "assets/img/share/share_link_guide_icon.png";
+	static const String img_share_share_list_guide_item_own_joined_share = "assets/img/share/share_list_guide_item_own_joined_share.png";
+	static const String img_share_share_list_guide_item_own_share_icon = "assets/img/share/share_list_guide_item_own_share_icon.png";
+	static const String img_share_share_list_guide_item_own_transfer_helper = "assets/img/share/share_list_guide_item_own_transfer_helper.png";
+	static const String img_share_youa_logo = "assets/img/share/youa_logo.png";
 	static const String img_bg_dn_audio_album_null_new_enter_nor = "assets/img/bg_dn_audio_album_null_new_enter_nor.png";
 	static const String img_bg_dn_common_titlebar_btn_add = "assets/img/bg_dn_common_titlebar_btn_add.png";
 	static const String img_bg_dn_common_titlebar_btn_address = "assets/img/bg_dn_common_titlebar_btn_address.png";
