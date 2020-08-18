@@ -46,4 +46,6 @@ class R {
 	static const String img_service_video_icon = "assets/img/service_video_icon.png";
 	static const String img_service_wechat_icon = "assets/img/service_wechat_icon.png";
 	static const String img_service_yingge_icon = "assets/img/service_yingge_icon.png";
+	static const String img_find_tradeplatform_homepage_palying_black_10 = "assets/img/find/tradeplatform_homepage_palying_black_10.png";
+	static const String img_find_tradeplatform_homepage_title_button_personal = "assets/img/find/tradeplatform_homepage_title_button_personal.png";
 }
