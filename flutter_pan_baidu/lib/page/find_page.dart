@@ -9,22 +9,42 @@ class FindPage extends StatefulWidget {
   _FindPageState createState() => _FindPageState();
 }
 
-class _FindPageState extends State<FindPage> {
+class _FindPageState extends State<FindPage>
+    with SingleTickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
     return Column(
-      children:[
-        _buildTitle(),
-        _buildBody()
-      ],
+      children: [_buildTitle(), _buildTabBar(), _buildBody()],
+    );
+  }
+
+  Widget _buildTabBar() {
+    return Container(
+      height: 40,
+      child: TabBar(
+        tabs: <Widget>[
+          for (var i in tags)
+            Text(
+              i,
+            )
+        ],
+        controller: _tabController,
+        labelColor: Colors.black,
+        indicatorColor: Colors.blue,
+        isScrollable: true,
+        indicatorSize: TabBarIndicatorSize.label,
+      ),
     );
   }
 
   PageController _pageController;
+  TabController _tabController;
 
   @override
   void initState() {
     _pageController = PageController(initialPage: 0);
+    _tabController =
+        TabController(length: tags.length, initialIndex: 0, vsync: this);
   }
 
   /***
@@ -91,15 +111,41 @@ class _FindPageState extends State<FindPage> {
     );
   }
 
+  var tags = [
+    "关注",
+    "推荐",
+    "会员",
+    "教育",
+    "热门影视",
+    "休闲娱乐",
+    "小说",
+    "外语",
+    "模板素材",
+    "情感生活",
+    "人文历史",
+    "商业财经"
+  ];
+
   Widget _buildBody() {
     return Expanded(
-      child: PageView.builder(
-        itemBuilder: (context, index) {
-          return Center(child: Text("page $index"));
-        },
-        controller: _pageController,
-        itemCount: 7,
-      ),
+      child:
+        TabBarView(
+          controller: _tabController,
+          children: <Widget>[
+            for (var i in tags)
+              Center(child:Text(
+                i,
+              ))
+          ],
+        )
+//      PageView.builder(
+//        itemBuilder: (context, index) {
+//          return Center(child: Text(tags[index]));
+//        },
+//        controller: _pageController,
+//        scrollDirection: Axis.horizontal,
+//        itemCount: tags.length,
+//      ),
     );
   }
 }
