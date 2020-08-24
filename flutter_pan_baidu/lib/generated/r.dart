@@ -29,6 +29,7 @@ class R {
 	static const String img_bottombar_icon_home_nor = "assets/img/bottombar_icon_home_nor.png";
 	static const String img_bottombar_icon_shared_nor = "assets/img/bottombar_icon_shared_nor.png";
 	static const String img_bottombar_icon_shared_pre = "assets/img/bottombar_icon_shared_pre.png";
+	static const String img_common_titlebar_icon_more = "assets/img/common_titlebar_icon_more.png";
 	static const String img_service_album_icon = "assets/img/service_album_icon.png";
 	static const String img_service_application_icon = "assets/img/service_application_icon.png";
 	static const String img_service_audio_icon = "assets/img/service_audio_icon.png";
@@ -48,4 +49,7 @@ class R {
 	static const String img_service_yingge_icon = "assets/img/service_yingge_icon.png";
 	static const String img_find_tradeplatform_homepage_palying_black_10 = "assets/img/find/tradeplatform_homepage_palying_black_10.png";
 	static const String img_find_tradeplatform_homepage_title_button_personal = "assets/img/find/tradeplatform_homepage_title_button_personal.png";
+	static const String img_file_icon_list_folder = "assets/img/file/icon_list_folder.png";
+	static const String img_file_radio_button_checked = "assets/img/file/radio_button_checked.png";
+	static const String img_file_radio_button_un_checked = "assets/img/file/radio_button_un_checked.png";
 }
