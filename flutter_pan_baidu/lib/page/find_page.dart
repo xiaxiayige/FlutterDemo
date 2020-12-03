@@ -13,8 +13,11 @@ class _FindPageState extends State<FindPage>
     with SingleTickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [_buildTitle(), _buildTabBar(), _buildBody()],
+    return Padding(
+      padding:   EdgeInsets.only(top: MediaQuery.of(context).padding.top),
+      child: Column(
+        children: [_buildTitle(), _buildTabBar(), _buildBody()],
+      ),
     );
   }
 

@@ -35,142 +35,145 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: <Widget>[
-        Padding(
-          padding:
-              const EdgeInsets.only(left: 16, top: 16, right: 16, bottom: 16),
-          child: Row(
-            children: <Widget>[
-              Expanded(
-                child: Container(
+    return Padding(
+      padding: EdgeInsets.only(top: MediaQuery.of(context).padding.top),
+      child: Column(
+        children: <Widget>[
+          Padding(
+            padding:
+                const EdgeInsets.only(left: 16, top: 16, right: 16, bottom: 16),
+            child: Row(
+              children: <Widget>[
+                Expanded(
+                  child: Container(
+                    height: 40,
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(20),
+                        color: Color(0xffF2F2F2)),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: <Widget>[
+                        SizedBox(
+                          width: 16,
+                        ),
+                        Icon(
+                          Icons.search,
+                          color: Color(0xffC3C3C3),
+                        ),
+                        SizedBox(
+                          width: 8,
+                        ),
+                        Text(
+                          "搜照片:地点,事务",
+                          style: TextStyle(
+                              color: Color(0xff949494),
+                              fontWeight: FontWeight.w600),
+                        )
+                      ],
+                    ),
+                  ),
+                ),
+                SizedBox(
+                  width: 10,
+                ),
+                Image.asset(
+                  R.img_bg_dn_common_titlebar_btn_transfer_small,
+                  width: 40,
                   height: 40,
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(20),
-                      color: Color(0xffF2F2F2)),
+                ),
+                SizedBox(
+                  width: 12,
+                ),
+                Image.asset(
+                  R.img_bg_dn_common_titlebar_btn_add,
+                  width: 40,
+                  height: 40,
+                )
+              ],
+            ),
+          ),
+          SizedBox(
+            height: 12,
+          ),
+          Expanded(
+            child: SingleChildScrollView(
+              child: Column(children: <Widget>[
+                Padding(
+                  padding: const EdgeInsets.only(left: 16, right: 12,bottom: 12),
                   child: Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: <Widget>[
-                      SizedBox(
-                        width: 16,
-                      ),
-                      Icon(
-                        Icons.search,
-                        color: Color(0xffC3C3C3),
-                      ),
-                      SizedBox(
-                        width: 8,
-                      ),
                       Text(
-                        "搜照片:地点,事务",
+                        "常用服务",
                         style: TextStyle(
-                            color: Color(0xff949494),
-                            fontWeight: FontWeight.w600),
+                            color: Colors.black,
+                            fontSize: 18,
+                            fontWeight: FontWeight.bold),
+                      ),
+                      Row(
+                        children: <Widget>[
+                          Text(
+                            "查看全部",
+                            style: TextStyle(
+                              color: Colors.grey,
+                            ),
+                          ),
+                          SizedBox(
+                            width: 4,
+                          ),
+                          Image.asset(
+                            R.img_bg_dn_audio_album_null_new_enter_nor,
+                            width: 12,
+                            height: 12,
+                          )
+                        ],
                       )
                     ],
                   ),
                 ),
-              ),
-              SizedBox(
-                width: 10,
-              ),
-              Image.asset(
-                R.img_bg_dn_common_titlebar_btn_transfer_small,
-                width: 40,
-                height: 40,
-              ),
-              SizedBox(
-                width: 12,
-              ),
-              Image.asset(
-                R.img_bg_dn_common_titlebar_btn_add,
-                width: 40,
-                height: 40,
-              )
-            ],
-          ),
-        ),
-        SizedBox(
-          height: 12,
-        ),
-        Expanded(
-          child: SingleChildScrollView(
-            child: Column(children: <Widget>[
-              Padding(
-                padding: const EdgeInsets.only(left: 16, right: 12,bottom: 12),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: <Widget>[
-                    Text(
-                      "常用服务",
-                      style: TextStyle(
-                          color: Colors.black,
+                SizedBox(
+                  height: 8,
+                ),
+                Container(
+                  margin: EdgeInsets.only(left: 12, right: 16),
+                  height: 230,
+                  child: GridView.builder(
+                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                        crossAxisCount: 3, mainAxisSpacing: 8, crossAxisSpacing: 8),
+                    itemBuilder: (context, index) {
+                      return buildCardWidget(cardWidget[index]);
+                    },
+                    itemCount: 6,
+                    shrinkWrap: false,
+                    physics: NeverScrollableScrollPhysics(),
+                  ),
+                ),
+                Container(margin: EdgeInsets.only(left: 12,right: 16),
+                  width: double.infinity,
+                  height: 50,
+                  color: Colors.white,
+                  child: Align( alignment:Alignment.bottomLeft,
+                      child: Text("照片定制新品上线",style: TextStyle(color: Colors.black,
                           fontSize: 18,
-                          fontWeight: FontWeight.bold),
-                    ),
-                    Row(
-                      children: <Widget>[
-                        Text(
-                          "查看全部",
-                          style: TextStyle(
-                            color: Colors.grey,
-                          ),
-                        ),
-                        SizedBox(
-                          width: 4,
-                        ),
-                        Image.asset(
-                          R.img_bg_dn_audio_album_null_new_enter_nor,
-                          width: 12,
-                          height: 12,
-                        )
-                      ],
+                          fontWeight: FontWeight.bold),)),
+                ),
+                Stack(
+                  children: <Widget>[
+                    Container(
+                      height: 300,
+                      margin: EdgeInsets.only(left: 12,right: 16,top: 16),
+                      color: Colors.orange,
                     )
                   ],
                 ),
-              ),
-              SizedBox(
-                height: 8,
-              ),
-              Container(
-                margin: EdgeInsets.only(left: 12, right: 16),
-                height: 230,
-                child: GridView.builder(
-                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 3, mainAxisSpacing: 8, crossAxisSpacing: 8),
-                  itemBuilder: (context, index) {
-                    return buildCardWidget(cardWidget[index]);
-                  },
-                  itemCount: 6,
-                  shrinkWrap: false,
-                  physics: NeverScrollableScrollPhysics(),
-                ),
-              ),
-              Container(margin: EdgeInsets.only(left: 12,right: 16),
-                width: double.infinity,
-                height: 50,
-                color: Colors.white,
-                child: Align( alignment:Alignment.bottomLeft,
-                    child: Text("照片定制新品上线",style: TextStyle(color: Colors.black,
-                        fontSize: 18,
-                        fontWeight: FontWeight.bold),)),
-              ),
-              Stack(
-                children: <Widget>[
-                  Container(
-                    height: 300,
-                    margin: EdgeInsets.only(left: 12,right: 16,top: 16),
-                    color: Colors.orange,
-                  )
-                ],
-              ),
-              SizedBox(height: 4,)
-            ],),
+                SizedBox(height: 4,)
+              ],),
+            ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }

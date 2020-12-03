@@ -88,8 +88,11 @@ class _MinePageState extends State<MinePage>
 
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      children: <Widget>[_buildBody(), _buildTitleBar()],
+    return Padding(
+      padding:   EdgeInsets.only(top: MediaQuery.of(context).padding.top),
+      child: Stack(
+        children: <Widget>[_buildBody(), _buildTitleBar()],
+      ),
     );
   }
 
@@ -156,9 +159,9 @@ class _MinePageState extends State<MinePage>
     return Container(
       padding: EdgeInsets.all(16),
       margin: EdgeInsets.only(left: 8, right: 8),
-      height: 210,
+      height: 230,
       decoration: BoxDecoration(boxShadow: [
-        BoxShadow(blurRadius: 8, color: Colors.grey.withAlpha(80))
+        BoxShadow(blurRadius: 8, color: Colors.grey.withAlpha(80),)
       ], borderRadius: BorderRadius.circular(8), color: Colors.white),
       child: Column(
         children: <Widget>[
@@ -187,18 +190,18 @@ class _MinePageState extends State<MinePage>
                   : Text("")
             ],
           ),
-          Flexible(
-            child: Container(
-              child: GridView.builder(
-                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 4, mainAxisSpacing: 8, crossAxisSpacing: 8),
-                itemBuilder: (context, index) {
-                  return buildItemCard(cards[index]);
-                },
-                itemCount: cards.length,
-                shrinkWrap: false,
-                physics: NeverScrollableScrollPhysics(),
-              ),
+
+          Expanded(
+            child: GridView.builder(
+              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 4, mainAxisSpacing: 8, crossAxisSpacing: 8),
+              itemBuilder: (context, index) {
+                return buildItemCard(cards[index]);
+              },
+              padding: EdgeInsets.symmetric(vertical: 16),
+              itemCount: cards.length,
+              shrinkWrap: false,
+              physics: NeverScrollableScrollPhysics(),
             ),
           )
         ],
@@ -232,9 +235,7 @@ class _MinePageState extends State<MinePage>
 
   Widget buildItemCard(CardInfo card) {
     return Container(
-      margin: EdgeInsets.only(top: 16),
       child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
           Image.asset(
             card.img,

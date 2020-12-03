@@ -36,11 +36,14 @@ class _FilePageState extends State<FilePage> {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: <Widget>[
-        _buildTitleBar(),
-        _buildBody(dataList)
-      ],
+    return Padding(
+      padding:   EdgeInsets.only(top: MediaQuery.of(context).padding.top),
+      child: Column(
+        children: <Widget>[
+          _buildTitleBar(),
+          _buildBody(dataList)
+        ],
+      ),
     );
   }
 
