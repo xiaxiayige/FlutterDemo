@@ -1,0 +1,263 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/tools"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:cardCornerRadius="15dp"
+    app:ignore="NamespaceTypo"
+    android:layout_gravity="center_vertical"
+    card_view:cardCornerRadius="8dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:background="@color/colorGray"
+        android:layout_gravity="center"
+        android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <com.example.flutter_app.widget.CircleCountDownView
+                    android:id="@+id/cpb_countdown"
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    app:circleBoardWidth="3dp"
+                    app:processBlurMaskRadius="3dp"
+                    app:showProgress="true"
+                    app:valueTextColor="@color/white" />
+
+                <LinearLayout
+                    android:id="@+id/ll_singlechoose"
+                    android:layout_width="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_height="60dp"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <RadioGroup
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:orientation="horizontal">
+
+                        <RadioButton
+                            android:id="@+id/rd_option_a"
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:layout_marginHorizontal="10dp"
+                            android:layout_weight="1"
+                            android:background="@drawable/select_work_opt"
+                            android:button="@null"
+                            android:checked="false"
+                            android:gravity="center"
+                            android:text="A"
+                            android:textSize="20sp" />
+
+                        <RadioButton
+                            android:id="@+id/rd_option_b"
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:layout_marginHorizontal="10dp"
+                            android:layout_weight="1"
+                            android:background="@drawable/select_work_opt"
+                            android:button="@null"
+                            android:checked="false"
+                            android:gravity="center"
+                            android:text="B"
+                            android:textSize="20sp" />
+
+                        <RadioButton
+                            android:id="@+id/rd_option_c"
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:layout_marginHorizontal="10dp"
+                            android:layout_weight="1"
+                            android:background="@drawable/select_work_opt"
+                            android:button="@null"
+                            android:checked="false"
+                            android:gravity="center"
+                            android:text="C"
+                            android:textSize="20sp" />
+
+                        <RadioButton
+                            android:id="@+id/rd_option_d"
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:layout_marginHorizontal="10dp"
+                            android:layout_weight="1"
+                            android:background="@drawable/select_work_opt"
+                            android:button="@null"
+                            android:checked="false"
+                            android:gravity="center"
+                            android:text="D"
+                            android:textSize="20sp" />
+
+
+                    </RadioGroup>
+                </LinearLayout>
+                <!--<TextView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginHorizontal="10dp"
+                    android:background="@drawable/select_work_opt"
+                    android:gravity="center"
+                    android:padding="4dp"
+                    android:text="A"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginHorizontal="10dp"
+                    android:background="@drawable/select_work_opt"
+                    android:gravity="center"
+                    android:padding="4dp"
+                    android:text="B"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginHorizontal="10dp"
+                    android:background="@drawable/select_work_opt"
+                    android:gravity="center"
+                    android:padding="4dp"
+                    android:text="C"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginHorizontal="10dp"
+                    android:background="@drawable/select_work_opt"
+                    android:gravity="center"
+                    android:padding="4dp"
+                    android:text="D"
+                    android:textSize="20sp" />-->
+                <LinearLayout
+                    android:id="@+id/ll_truefalse"
+                    android:layout_width="wrap_content"
+                    android:layout_height="60dp"
+                    android:layout_gravity="center_vertical"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <RadioGroup
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:orientation="horizontal">
+
+                        <RadioButton
+                            android:id="@+id/rd_right"
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:layout_weight="1"
+                            android:button="@null"
+                            android:gravity="center"
+                            android:text="是"
+                           />
+
+                        <RadioButton
+                            android:id="@+id/rd_wrong"
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:layout_weight="1"
+                            android:button="@null"
+                            android:gravity="center"
+                            android:text="非"
+                           />
+
+                    </RadioGroup>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="80dp"
+                    android:layout_gravity="center"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center_vertical"
+                        android:gravity="center">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="center"
+                            android:gravity="center"
+                            android:paddingRight="10dp"
+                            android:text="上一题"
+                            android:textSize="18dp"
+                            android:visibility="gone" />
+
+                        <TextView
+                            android:id="@+id/btn_submit"
+                            android:layout_width="145dp"
+                            android:layout_height="45dp"
+                            android:layout_gravity="center"
+                            android:layout_marginHorizontal="10dp"
+                            android:gravity="center"
+                            android:text="提交"
+                            android:textColor="#ffffff"
+                            android:textSize="18sp" />
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <FrameLayout
+                    android:id="@+id/fl_title_layout"
+                    android:layout_width="60dp"
+                    android:visibility="gone"
+                    android:layout_height="50dp">
+
+                    <ImageView
+                        android:id="@+id/img_back_pop"
+                        android:layout_width="20dp"
+                        android:layout_height="30dp"
+                        android:layout_gravity="right"
+                        android:layout_marginLeft="160dp"
+                        android:layout_marginRight="25dp"
+                      />
+
+                </FrameLayout>
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tv_question_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="5dp"
+                android:text="第5/5题"
+                android:textColor="#999999"
+                android:textSize="18sp"
+                android:visibility="gone" />
+            <!--    <com.geniusphone.xdd.weight.CountDownProgressBar
+                    android:id="@+id/cpb_countdown"
+                    android:layout_gravity="center"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="10dp"
+                    app:countDown_centerTextColor="#2395FF"
+                    app:countDown_centerTextSize="10dp"
+                    app:countDown_circleWidth="4dp"
+                    app:countDown_firstColor="#ff00ff"
+                    app:countDown_secondColor="#00ff00" />
+                    -->
+        </LinearLayout>
+
+</LinearLayout>
+

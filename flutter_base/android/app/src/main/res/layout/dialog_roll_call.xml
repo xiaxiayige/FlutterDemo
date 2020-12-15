@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/tools"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:layout_width="250dp"
+    android:layout_height="220dp"
+    android:clickable="true"
+    app:cardCornerRadius="15dp"
+    android:layout_gravity="center"
+    app:ignore="NamespaceTypo"
+    card_view:cardCornerRadius="8dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <com.example.flutter_app.widget.CircleCountDownView
+            android:id="@+id/cpb_countdown"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            app:circleBoardWidth="3dp"
+            android:layout_marginTop="10dp"
+            app:processBlurMaskRadius="3dp"
+            app:showProgress="true"
+            app:valueTextColor="@color/white"/>
+
+        <TextView
+            android:id="@+id/tip_check"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginVertical="20dp"
+            android:gravity="center"
+            android:text="老师点名啦"
+            android:textColor="#FA771C"
+            android:textSize="25sp" />
+
+        <TextView
+            android:id="@+id/btn_check"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="10dp"
+            android:gravity="center"
+            android:text="签到"
+            android:textColor="#FFFFFF"
+            android:layout_marginBottom="10dp"
+            android:textSize="25sp" />
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>

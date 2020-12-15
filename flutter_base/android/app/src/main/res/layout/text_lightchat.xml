@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/layout_chat"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black_alpha_5"
+    android:orientation="vertical"
+    >
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <ListView
+                android:id="@+id/msg_list_view"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:divider="#0000"
+                android:transcriptMode="alwaysScroll">
+                <!--上面layout_weight属性(将layout_height设置为0dp配合layout_weight使用)表示设置他的高度权重比例为"1"-->
+                <!--divider属性这里我们将ListView的分割线设置为透明色-->
+
+            </ListView>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <EditText
+                    android:id="@+id/ed_speak"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="3dp"
+                    android:layout_weight="3"
+                    android:cursorVisible="false"
+                    android:gravity="center"
+                    android:hint="说点什么吧"
+                    android:textColor="#131212"
+                    android:textSize="13sp" />
+                <ImageView
+                    android:id="@+id/btnsendmsg"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="9"
+                    android:gravity="center"
+                    android:padding="5dp"
+                    />
+                <TextView
+                    android:id="@+id/chatforbiddentip"
+                    android:background="@color/black_alpha_5"
+                    android:textColor="@color/app_color_grey"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:visibility="gone"></TextView>
+            </LinearLayout>
+        </LinearLayout>
+        <ImageView
+            android:id="@+id/iv_chat_top"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:background="@mipmap/daohangshang" />
+    </RelativeLayout>
+</LinearLayout>

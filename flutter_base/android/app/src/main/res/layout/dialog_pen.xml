@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="60dp"
+    android:paddingVertical="10dp"
+    android:gravity="center"
+    android:orientation="horizontal"
+    android:background="#333333">
+
+    <ImageView
+        android:id="@+id/iv_penwidth1"
+        android:layout_width="10dp"
+        android:layout_height="10dp"
+        android:layout_gravity="center"
+        android:layout_marginHorizontal="15dp"
+        android:background="@drawable/shape_work_opt_true" />
+
+    <ImageView
+        android:id="@+id/iv_penwidth2"
+        android:layout_width="15dp"
+        android:layout_height="15dp"
+        android:layout_gravity="center"
+        android:layout_marginHorizontal="15dp"
+        android:background="@drawable/shape_work_opt_true" />
+
+    <ImageView
+        android:id="@+id/iv_penwidth3"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_gravity="center"
+        android:layout_marginHorizontal="15dp"
+        android:background="@drawable/shape_work_opt_true" />
+
+    <ImageView
+        android:id="@+id/iv_pencolor1"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_gravity="center"
+        android:layout_marginHorizontal="15dp"
+         />
+    <ImageView
+        android:id="@+id/iv_pencolor2"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_gravity="center"
+        android:layout_marginHorizontal="15dp"
+         />
+    <ImageView
+        android:id="@+id/iv_pencolor3"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_gravity="center"
+        android:layout_marginHorizontal="15dp"
+       />
+    <ImageView
+        android:id="@+id/iv_pencolor4"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_gravity="center"
+        android:layout_marginHorizontal="15dp"
+        />
+    <ImageView
+        android:id="@+id/iv_pencolor5"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_gravity="center"
+        android:layout_marginHorizontal="15dp"
+         />
+</LinearLayout>

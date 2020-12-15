@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Theme applied to the Android Window while the process is starting -->
+    <style name="LaunchTheme" parent="@android:style/Theme.Black.NoTitleBar">
+        <!-- Show a splash screen on the activity. Automatically removed when
+             Flutter draws its first frame -->
+        <item name="android:windowBackground">@drawable/launch_background</item>
+    </style>
+    <!-- Theme applied to the Android Window as soon as the process has started.
+         This theme determines the color of the Android Window while your
+         Flutter UI initializes, as well as behind your Flutter UI while its
+         running.
+         
+         This Theme is only used starting with V2 of Flutter's Android embedding. -->
+    <style name="NormalTheme" parent="@android:style/Theme.Black.NoTitleBar">
+        <item name="android:windowBackground">@android:color/white</item>
+    </style>
+
+    <declare-styleable name="CustomHorizontalProgresStyle">
+        <attr name="HorizontalProgresUnReachColor" format="color"></attr>
+        <attr name="HorizontalProgresUnReachHeight" format="dimension"></attr>
+        <attr name="HorizontalProgresReachColor" format="color"></attr>
+        <attr name="HorizontalProgresReachHeight" format="dimension"></attr>
+        <attr name="HorizontalProgresTextColor" format="color"></attr>
+        <attr name="HorizontalProgresTextSize" format="dimension"></attr>
+        <attr name="HorizontalProgresTextOffset" format="dimension"></attr>
+    </declare-styleable>
+
+    <declare-styleable name="CircleCountDownView">
+        <!--控件中间图片资源-->
+        <attr name="circleImgSrc" format="reference" />
+        <attr name="circleBorderColor" format="color" />
+        <attr name="circleBorderWidth" format="dimension" />
+        <attr name="valueTextSize" format="dimension" />
+        <attr name="valueTextColor" format="color" />
+        <attr name="padding" format="dimension" />
+        <attr name="showProgress" format="boolean" />
+        <attr name="processColorStart" format="color" />
+        <attr name="processColorEnd" format="color" />
+        <attr name="processBlurMaskRadius" format="dimension" />
+    </declare-styleable>
+</resources>
